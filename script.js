@@ -1,5 +1,28 @@
 "use strict";
 
+const addBookBtn = document.querySelector("#addBookBtn");
+const dialog = document.querySelector("#addBook");
+const cancelBtn = document.querySelector("#cancel");
+const submitBtn = document.querySelector("#submit");
+
+
+
+addBookBtn.addEventListener("click", () => {
+    dialog.showModal();
+});
+
+cancelBtn.addEventListener("click", () => {
+    dialog.close();
+});
+
+submitBtn.addEventListener("click", (event) =>{
+    event.preventDefault();
+    dialog.close();
+});
+
+
+
+
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
