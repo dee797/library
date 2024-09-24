@@ -4,8 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    
+
+    <button id="addBookBtn">Add New Book</button>
+    <dialog id="addBook">
+        <form method="dialog">
+
+            <div>
+                <label>
+                    Title:
+                    <input id="title" type="text" maxlength="75" autofocus required>
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    Author:
+                    <input id="author" type="text" maxlength="75" required>
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    Number of pages:
+                    <input id="pages" type="number" max="1500" min="1" required>
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    <input id="read" type="checkbox">
+                    Already read
+                </label>
+            </div>
+
+            <div>
+                <button type="button" id="cancel">Cancel</button>
+                <button type="submit" id="submit">Submit</button>
+            </div>
+
+        </form>
+    </dialog>
+
 </body>
 </html>
