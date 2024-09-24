@@ -2,28 +2,24 @@
 
 const addBookBtn = document.querySelector("#addBookBtn");
 const dialog = document.querySelector("#addBook");
-const cancelBtn = document.querySelector("#cancel");
-const submitBtn = document.querySelector("#submit");
-
+const form = document.querySelector("form");
+let data;
 
 
 addBookBtn.addEventListener("click", () => {
     dialog.showModal();
 });
 
-cancelBtn.addEventListener("click", () => {
-    dialog.close();
-});
-
-submitBtn.addEventListener("click", (event) =>{
+form.addEventListener("submit", (event) => {
+    data = new FormData(form);
     event.preventDefault();
     dialog.close();
 });
 
-
-
-
 const myLibrary = [];
+
+
+
 
 function Book(title, author, pages, read) {
     this.title = title;
