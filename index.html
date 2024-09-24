@@ -10,40 +10,41 @@
 
     <button id="addBookBtn">Add New Book</button>
     <dialog id="addBook">
-        <form method="dialog">
+        <form id="form">
 
-            <div>
+            <p>
                 <label>
                     Title:
-                    <input id="title" type="text" maxlength="75" autofocus required>
+                    <input id="title" name="title" type="text" maxlength="75" autofocus required autocomplete="off">
                 </label>
-            </div>
+            </p>
 
-            <div>
+            <p>
                 <label>
                     Author:
-                    <input id="author" type="text" maxlength="75" required>
+                    <input id="author" name="author" type="text" maxlength="75" required autocomplete="off">
                 </label>
-            </div>
+            </p>
 
-            <div>
+            <p>
                 <label>
                     Number of pages:
-                    <input id="pages" type="number" max="1500" min="1" required>
+                    <input id="pages" name="pages" type="number" max="1500" min="1" required>
                 </label>
-            </div>
+            </p>
 
-            <div>
-                <label>
-                    <input id="read" type="checkbox">
-                    Already read
-                </label>
-            </div>
+            <p>
+                Already read:
+                <label for="yes">Yes</label>
+                <input id="yes" name="read" type="radio" value="true" required>
+                <label for="no">No</label>
+                <input id="no" name="read" type="radio" value="false" required>
+            </p>
 
-            <div>
+            <p>
                 <button type="button" id="cancel">Cancel</button>
-                <button type="submit" id="submit">Submit</button>
-            </div>
+                <button type="submit" id="submit" formmethod="post">Submit</button>
+            </p>
 
         </form>
     </dialog>
