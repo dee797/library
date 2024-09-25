@@ -9,6 +9,7 @@ let data;
 
 
 addBookBtn.addEventListener("click", () => {
+    form.reset();
     dialog.showModal();
 });
 
@@ -29,7 +30,7 @@ cancelBtn.addEventListener("click", () => {
 
 
 
-function Book(title, author, pages, read, bookNum) {
+function Book(title="", author="", pages="", read="", bookNum="") {
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -47,51 +48,67 @@ function Book(title, author, pages, read, bookNum) {
     }
 }
 
+
 function addBookToLibrary() {
     myLibrary.push(new Book(data.title, data.author, data.pages, data.read, myLibrary.length));
 }
 
+
 function showBooks() {
 
     if (myLibrary.length === 0) {
-        library.textContent = "You currently have no books.";
+        document.querySelector("#noBooks").style.display = "block";
+        library.textContent = "";
     }
     else {
+        document.querySelector("#noBooks").style.display = "none";
         library.textContent = "";
 
-        const titleHeader = document.createElement("div");
-        titleHeader.textContent = "Title";
-        library.appendChild(titleHeader);
+        for (let i = 0; i < 4; i++) {
+            const headerDiv = document.createElement("h2");
+            const keyList = Object.keys(new Book());
+            headerDiv.textContent = keyList[i].charAt(0).toUpperCase() + keyList[i].substring(1).toLowerCase();
+            library.appendChild(headerDiv);
+        }
 
-        const authorHeader = document.createElement("div");
-        authorHeader.textContent = "Author";
-        library.appendChild(authorHeader);
-            
-        const pagesHeader = document.createElement("div");
-        pagesHeader.textContent = "Number of Pages";
-        library.appendChild(pagesHeader);
 
-        const readHeader = document.createElement("div");
-        readHeader.textContent = "Read or Not";
-        library.appendChild(readHeader);
-        
+        const toggleDiv = document.createElement("h2");
+        toggleDiv.textContent = "Toggle Read Status";
+        library.appendChild(toggleDiv);
+
+        const removeDiv = document.createElement("h2");
+        removeDiv.textContent = "Remove Book";
+        library.appendChild(removeDiv);
+
         
         myLibrary.forEach(book => {
-            const bookTitle = document.createElement("div");
-            bookTitle.textContent = book.title;
-            library.appendChild(bookTitle);
+            const valueList = Object.values(book);
 
-            const bookAuthor = document.createElement("div");
-            bookAuthor.textContent = book.author;
-            library.appendChild(bookAuthor);
+            for (let i = 0; i < 4; i++) {
+                const bookAttr = document.createElement("div");
+                bookAttr.textContent = valueList[i];
+                library.appendChild(bookAttr);
+            }
 
-            const bookPages = document.createElement("div");
-            bookPages.textContent = book.pages;
-            library.appendChild(bookPages);
+            const toggleRead = document.createElement("button");
+            toggleRead.type = "button";
+            toggleRead.textContent = "Toggle";
+            library.appendChild(toggleRead);
 
-            const bookRead = document.createElement("div");
-            bookRead.textContent = book.read;
-            library.appendChild(bookRead);
+            toggleRead.addEventListener("click", () => {
+                const bookRead = toggleRead.previousSibling;
+                book.read = bookRead.textContent === "Yes" ? "No" : "Yes";
+                bookRead.textContent = book.read;
+            });
+            
+
+            const removeBtn = document.createElement("button");
+            removeBtn.type = "button";
+            removeBtn.textContent = "Remove";
+            library.appendChild(removeBtn);
+
+            
+
         });
     
     }
