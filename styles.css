@@ -8,20 +8,22 @@ body {
     justify-content: center;
 }
 
-h1 {
+h1, #noBooks {
     text-align: center;
 }
 
 #addBookBtn {
+    margin: 60px;
     width: 150px;
     justify-self: center;
 }
 
-#library {
+#library, #heading {
     box-sizing: border-box;
-    margin: 20px auto;
-    width: 750px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    margin: auto;
+    width: 800px;
+    gap: 20px;
+    grid-template-columns: repeat(6, 1fr);
 }
+
 
