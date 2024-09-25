@@ -56,32 +56,19 @@ function addBookToLibrary() {
 
 function showBooks() {
 
+    library.textContent = "";
+
     if (myLibrary.length === 0) {
         document.querySelector("#noBooks").style.display = "block";
-        library.textContent = "";
+        document.querySelector("#heading").style.display = "none";
+        
     }
     else {
         document.querySelector("#noBooks").style.display = "none";
-        library.textContent = "";
-
-        for (let i = 0; i < 4; i++) {
-            const headerDiv = document.createElement("h2");
-            const keyList = Object.keys(new Book());
-            headerDiv.textContent = keyList[i].charAt(0).toUpperCase() + keyList[i].substring(1).toLowerCase();
-            library.appendChild(headerDiv);
-        }
-
-
-        const toggleDiv = document.createElement("h2");
-        toggleDiv.textContent = "Toggle Read Status";
-        library.appendChild(toggleDiv);
-
-        const removeDiv = document.createElement("h2");
-        removeDiv.textContent = "Remove Book";
-        library.appendChild(removeDiv);
-
+        document.querySelector("#heading").style.display = "grid";
         
         myLibrary.forEach(book => {
+
             const valueList = Object.values(book);
 
             for (let i = 0; i < 4; i++) {
@@ -90,10 +77,12 @@ function showBooks() {
                 library.appendChild(bookAttr);
             }
 
+
             const toggleRead = document.createElement("button");
             toggleRead.type = "button";
             toggleRead.textContent = "Toggle";
             library.appendChild(toggleRead);
+
 
             toggleRead.addEventListener("click", () => {
                 const bookRead = toggleRead.previousSibling;
@@ -107,10 +96,17 @@ function showBooks() {
             removeBtn.textContent = "Remove";
             library.appendChild(removeBtn);
 
-            
 
+            removeBtn.addEventListener("click", () => {
+                myLibrary.splice(book.bookNum, 1);
+
+                myLibrary.forEach(book => {
+                    book.bookNum = myLibrary.indexOf(book);
+                });
+
+                showBooks();
+            });
         });
-    
     }
 }
 
