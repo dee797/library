@@ -61,11 +61,12 @@ function showBooks() {
     if (myLibrary.length === 0) {
         document.querySelector("#noBooks").style.display = "block";
         document.querySelector("#heading").style.display = "none";
-        
+        library.style.display = "none";
     }
     else {
         document.querySelector("#noBooks").style.display = "none";
         document.querySelector("#heading").style.display = "grid";
+        library.style.display = "grid";
         
         myLibrary.forEach(book => {
 
