@@ -8,6 +8,9 @@
 </head>
 <body>
 
+    <h1>Your Library</h1>
+    <div id="library"></div>
+
     <button id="addBookBtn">Add New Book</button>
     <dialog id="addBook">
         <form id="form">
@@ -36,13 +39,13 @@
             <p>
                 Already read:
                 <label for="yes">Yes</label>
-                <input id="yes" name="read" type="radio" value="true" required>
+                <input id="yes" name="read" type="radio" value="Yes" required>
                 <label for="no">No</label>
-                <input id="no" name="read" type="radio" value="false" required>
+                <input id="no" name="read" type="radio" value="No" required>
             </p>
 
             <p>
-                <button type="button" id="cancel">Cancel</button>
+                <button type="button" id="cancel" formmethod="dialog">Cancel</button>
                 <button type="submit" id="submit" formmethod="post">Submit</button>
             </p>
 
