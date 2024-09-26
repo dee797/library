@@ -48,6 +48,11 @@ function Book(title="", author="", pages="", read="", bookNum="") {
     }
 }
 
+Book.prototype.toggleRead = function(book, bookRead) {
+    book.read = bookRead.textContent === "Yes" ? "No" : "Yes";
+    bookRead.textContent = book.read;
+}
+
 
 function addBookToLibrary() {
     myLibrary.push(new Book(data.title, data.author, data.pages, data.read, myLibrary.length));
@@ -87,8 +92,7 @@ function showBooks() {
 
             toggleRead.addEventListener("click", () => {
                 const bookRead = toggleRead.previousSibling;
-                book.read = bookRead.textContent === "Yes" ? "No" : "Yes";
-                bookRead.textContent = book.read;
+                book.toggleRead(book, bookRead);
             });
             
 
