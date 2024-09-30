@@ -28,16 +28,16 @@ cancelBtn.addEventListener("click", () => {
 })
 
 
+class Book {
+    constructor(title="", author="", pages="", read="", bookNum="") {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.bookNum = bookNum;
+    }
 
-
-function Book(title="", author="", pages="", read="", bookNum="") {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.bookNum = bookNum
-
-    this.info = function() {
+    get info() {
         if (this.read === "Yes") {
             return `${this.title} by ${this.author}, ${this.pages} pages,
             already read`;
@@ -46,11 +46,11 @@ function Book(title="", author="", pages="", read="", bookNum="") {
             not yet read`;
         }
     }
-}
 
-Book.prototype.toggleRead = function(book, bookRead) {
-    book.read = bookRead.textContent === "Yes" ? "No" : "Yes";
-    bookRead.textContent = book.read;
+    toggleRead(book, bookRead) {
+        book.read = bookRead.textContent === "Yes" ? "No" : "Yes";
+        bookRead.textContent = book.read;
+    }
 }
 
 
